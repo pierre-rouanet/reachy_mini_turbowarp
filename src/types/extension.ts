@@ -3,7 +3,7 @@
  * Internal types for extension implementation
  */
 
-import type { InterpolationMode, MotorControlMode, XYZRPYPose } from './api.js';
+import type { InterpolationMode, MotorControlMode } from './api.js';
 
 // ============================================================================
 // Block Argument Types
@@ -117,7 +117,7 @@ export interface HeadDirectionPreset {
  * Map of head directions to pose presets
  */
 export type HeadDirectionPresets = {
-  [K in HeadDirection]: HeadDirectionPreset;
+  [_K in HeadDirection]: HeadDirectionPreset;
 };
 
 // ============================================================================
