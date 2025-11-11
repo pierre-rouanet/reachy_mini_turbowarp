@@ -14,12 +14,12 @@
  * 3D pose using position (x, y, z) in meters and orientation (roll, pitch, yaw) in radians
  */
 export interface XYZRPYPose {
-  x: number;      // meters
-  y: number;      // meters
-  z: number;      // meters
-  roll: number;   // radians
-  pitch: number;  // radians
-  yaw: number;    // radians
+  x: number; // meters
+  y: number; // meters
+  z: number; // meters
+  roll: number; // radians
+  pitch: number; // radians
+  yaw: number; // radians
 }
 
 /**
@@ -27,10 +27,22 @@ export interface XYZRPYPose {
  */
 export interface Matrix4x4Pose {
   m: [
-    number, number, number, number,
-    number, number, number, number,
-    number, number, number, number,
-    number, number, number, number
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
   ];
 }
 
@@ -69,9 +81,9 @@ export type InterpolationMode = 'linear' | 'minjerk' | 'ease' | 'cartoon';
  */
 export interface GotoRequest {
   head_pose?: XYZRPYPose | null;
-  antennas?: [number, number] | null;  // [left, right] in radians
-  body_yaw?: number | null;             // radians
-  duration: number;                     // seconds
+  antennas?: [number, number] | null; // [left, right] in radians
+  body_yaw?: number | null; // radians
+  duration: number; // seconds
   interpolation?: InterpolationMode;
 }
 
@@ -93,9 +105,9 @@ export interface FullState {
   control_mode?: MotorControlMode | null;
   head_pose?: AnyPose | null;
   head_joints?: number[] | null;
-  body_yaw?: number | null;              // radians
-  antennas_position?: number[] | null;   // [left, right] in radians
-  timestamp?: string | null;             // ISO 8601 datetime
+  body_yaw?: number | null; // radians
+  antennas_position?: number[] | null; // [left, right] in radians
+  timestamp?: string | null; // ISO 8601 datetime
   passive_joints?: number[] | null;
 }
 
@@ -104,9 +116,9 @@ export interface FullState {
  */
 export interface FullBodyTarget {
   target_head_pose?: AnyPose | null;
-  target_antennas?: [number, number] | null;  // [left, right] in radians
-  target_body_yaw?: number | null;            // radians
-  timestamp?: string | null;                  // ISO 8601 datetime
+  target_antennas?: [number, number] | null; // [left, right] in radians
+  target_body_yaw?: number | null; // radians
+  timestamp?: string | null; // ISO 8601 datetime
 }
 
 // ============================================================================
