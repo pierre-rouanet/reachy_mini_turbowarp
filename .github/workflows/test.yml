@@ -42,10 +42,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install system dependencies for MuJoCo
+      - name: Install system dependencies for MuJoCo and audio
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1 libosmesa6 libglew-dev
+          sudo apt-get install -y libgl1 libosmesa6 libglew-dev libportaudio2
 
       - name: Install Reachy Mini with MuJoCo
         run: |
