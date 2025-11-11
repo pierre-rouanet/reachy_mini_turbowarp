@@ -32,7 +32,10 @@
     "noImplicitOverride": true,
 
     /* Completeness */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    /* TurboWarp Types */
+    "types": ["@turbowarp/types"]
   },
   "include": [
     "src/**/*"
