@@ -1,6 +1,6 @@
 {
   "name": "reachy-mini-turbowarp-extension",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "TurboWarp (Scratch 3.0) custom extension for Reachy Mini robot",
   "type": "module",
   "main": "dist/extension.js",
