@@ -6,8 +6,8 @@ Custom TurboWarp/Scratch 3.0 extension for controlling the Reachy Mini robot.
 
 ## Prerequisites
 
-- **TurboWarp Desktop** (or the web editor) installed.
-- **Reachy Mini SDK** checked out on your machine.
+- **[TurboWarp Desktop](https://desktop.turbowarp.org/)** (or the web editor) installed.
+- **[Reachy Mini SDK](https://github.com/pollen-robotics/reachy_mini)** checked out on your machine.
 - The `reachy-mini-daemon` process running (real robot, wireless version, or simulator mode).  
   The extension communicates with the daemon at `http://localhost:8000/api/`, so ensure the daemon is reachable before loading the extension.
 
@@ -33,7 +33,6 @@ Available npm scripts:
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Start the Vite dev server with hot reload (`http://localhost:3000`). |
 | `npm run lint` | Run ESLint and formatting checks. |
 | `npm run test:unit` | Execute unit tests (no daemon required). |
 | `npm run test:integration` | Runs against a live/simulated Reachy Mini daemon (ensure `reachy-mini-daemon` is running). |
