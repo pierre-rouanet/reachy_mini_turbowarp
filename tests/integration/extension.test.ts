@@ -247,6 +247,22 @@ describe('Extension Integration Tests', () => {
   //   });
   // });
 
+  describe('Body Control', () => {
+    test('should move body yaw', async () => {
+      await extension.moveBodyYaw({
+        ANGLE: 20, // degrees
+        DURATION: 0.8,
+      });
+
+      await waitForMovement(0.8);
+
+      const bodyYaw = await extension.getBodyYaw();
+
+      expect(typeof bodyYaw).toBe('number');
+      expectAngleCloseTo(bodyYaw, 20, 2);
+    });
+  });
+
   // Note: Motor mode change tests are skipped (not supported in simulator)
 
   describe('Reporter Blocks', () => {

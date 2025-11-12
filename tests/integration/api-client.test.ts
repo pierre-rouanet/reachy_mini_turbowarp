@@ -137,6 +137,28 @@ describe('API Client Integration Tests', () => {
   });
 
   describe('Body Control', () => {
+    test('should move body yaw', async () => {
+      const result = await apiClient.goto({
+        body_yaw: 0.3, // ~17 degrees
+        duration: 0.8,
+        interpolation: 'minjerk',
+      });
+
+      expect(result.uuid).toBeDefined();
+
+      // Wait for movement to complete
+      await waitForMovement(0.8);
+
+      // Verify state
+      const state = await getRobotState();
+      const bodyYaw = state.body_yaw;
+
+      expect(bodyYaw).toBeDefined();
+      if (bodyYaw !== undefined) {
+        expectAngleCloseTo(bodyYaw, 0.3, 0.15);
+      }
+    });
+
     test('should get current body yaw', async () => {
       const bodyYaw = await apiClient.getBodyYaw();
 
