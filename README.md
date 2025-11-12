@@ -36,7 +36,7 @@ Available npm scripts:
 | `npm run test:unit` | Execute unit tests (no daemon required). |
 | `npm run test:integration` | Runs against a live/simulated Reachy Mini daemon (ensure `reachy-mini-daemon` is running). |
 | `npm run build` | Compile the TypeScript sources into `dist/extension.js`. |
-| `npm run preview` | Serve the production bundle locally via Vite (`http://localhost:3000` by default). |
+| `npm run preview` | Serve the production bundle locally via Vite (`http://localhost:3000/extension.js`). |
 
 CI (GitHub Actions) runs lint, unit tests, integration tests, and a deploy job that pushes `dist/` to the `gh-pages` branch, enabling the jsDelivr delivery described above.
 
