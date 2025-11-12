@@ -22,7 +22,7 @@ Custom TurboWarp/Scratch 3.0 extension for controlling the Reachy Mini robot.
 
    **Specific version (recommended for production):**
    ```
-   https://cdn.jsdelivr.net/gh/iizukak/reachy_mini_turbowarp@v0.2.0/dist/extension.js
+   TBD
    ```
 
 2. In TurboWarp:

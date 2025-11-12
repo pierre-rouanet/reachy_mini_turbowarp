@@ -503,6 +503,7 @@ export class ReachyMiniExtension {
           yaw: preset.yaw,
           roll: preset.roll,
         },
+        body_yaw: 0, // Explicitly set body_yaw to 0 for predictable head movement
         duration,
         interpolation: 'minjerk',
       });
@@ -541,6 +542,7 @@ export class ReachyMiniExtension {
           yaw,
           roll,
         },
+        body_yaw: 0, // Explicitly set body_yaw to 0 for predictable head movement
         duration,
         interpolation: 'minjerk',
       });

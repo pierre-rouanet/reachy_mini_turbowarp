@@ -259,7 +259,8 @@ describe('Extension Integration Tests', () => {
       const bodyYaw = await extension.getBodyYaw();
 
       expect(typeof bodyYaw).toBe('number');
-      expectAngleCloseTo(bodyYaw, 20, 2);
+      // Tolerance increased to 4 degrees for real robot precision
+      expectAngleCloseTo(bodyYaw, 20, 4);
     });
   });
 
@@ -296,15 +297,16 @@ describe('Extension Integration Tests', () => {
       const yaw = await extension.getHeadYaw();
 
       expect(typeof yaw).toBe('number');
-      expectAngleCloseTo(yaw, 15, 2);
+      // Tolerance increased to 4 degrees for real robot precision
+      expectAngleCloseTo(yaw, 15, 4);
     });
 
     test('should get head roll in degrees', async () => {
       const roll = await extension.getHeadRoll();
 
       expect(typeof roll).toBe('number');
-      // Roll should be close to 0 in default pose
-      expectAngleCloseTo(roll, 0, 2);
+      // Roll should be close to 0 in default pose (increased tolerance for real robot)
+      expectAngleCloseTo(roll, 0, 4);
     });
 
     test('should get left antenna angle in degrees', async () => {
@@ -319,7 +321,8 @@ describe('Extension Integration Tests', () => {
       const angle = await extension.getLeftAntenna();
 
       expect(typeof angle).toBe('number');
-      expectAngleCloseTo(angle, 20, 2);
+      // Tolerance increased to 4 degrees for real robot precision
+      expectAngleCloseTo(angle, 20, 4);
     });
 
     test('should get right antenna angle in degrees', async () => {
@@ -334,15 +337,16 @@ describe('Extension Integration Tests', () => {
       const angle = await extension.getRightAntenna();
 
       expect(typeof angle).toBe('number');
-      expectAngleCloseTo(angle, -20, 2);
+      // Tolerance increased to 4 degrees for real robot precision
+      expectAngleCloseTo(angle, -20, 4);
     });
 
     test('should get body yaw in degrees', async () => {
       const bodyYaw = await extension.getBodyYaw();
 
       expect(typeof bodyYaw).toBe('number');
-      // Body yaw should be close to 0
-      expectAngleCloseTo(bodyYaw, 0, 2);
+      // Body yaw should be close to 0 (increased tolerance for real robot)
+      expectAngleCloseTo(bodyYaw, 0, 4);
     });
 
     test('should get motor mode', async () => {
