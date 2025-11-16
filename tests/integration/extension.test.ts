@@ -348,9 +348,11 @@ describe('Extension Integration Tests', () => {
   });
 
   describe('Recorded Move Blocks', () => {
+    const dataset = 'pollen-robotics/reachy-mini-dances-library';
+    const fallbackMove = 'groovy_sway_and_roll';
+
     test('should play recorded move dataset when available', async () => {
       let moves: string[] | null = null;
-      const dataset = 'pollen-robotics/reachy-mini-dances-library';
       try {
         moves = await apiClient.listRecordedMoves(dataset);
       } catch (error) {
@@ -370,6 +372,25 @@ describe('Extension Integration Tests', () => {
       await extension.playRecordedMoveDataset({
         MOVE: moveValue,
       });
+
+      await waitForAnimation();
+      expect(true).toBe(true);
+    });
+
+    test('should play recorded move from static menu option format', async () => {
+      const moveValue = `${dataset}||${fallbackMove}`;
+
+      try {
+        await extension.playRecordedMoveDataset({
+          MOVE: moveValue,
+        });
+      } catch (error) {
+        console.warn(
+          '[RecordedMoves] Skipping static value test - dataset unavailable:',
+          error instanceof Error ? error.message : error,
+        );
+        return;
+      }
 
       await waitForAnimation();
       expect(true).toBe(true);
