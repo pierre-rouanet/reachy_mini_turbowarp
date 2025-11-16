@@ -20,7 +20,7 @@ const sanitizeBaseUrl = (rawUrl: string): string => {
     const parsed = new URL(rawUrl);
     if (!LOCALHOST_HOSTNAMES.has(parsed.hostname)) {
       throw new Error(
-        `[ReachyMiniApiClient] Base URL must point to localhost (received ${parsed.hostname})`,
+        `[ReachyMiniApiClient] Base URL must point to localhost (received ${parsed.hostname})`
       );
     }
     // Remove trailing slashes for consistency
