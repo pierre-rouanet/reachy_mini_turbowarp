@@ -204,12 +204,20 @@ export class ReachyMiniApiClient {
    */
   async goto(request: GotoRequest): Promise<MoveUUID> {
     const url = `${this.config.baseUrl}/move/goto`;
+    const payload: GotoRequest = { ...request };
+
+    // Reachy Mini daemon uses opposite yaw sign convention for the body.
+    // Flip here so positive inputs from TurboWarp/UI produce positive readings.
+    if (typeof payload.body_yaw === 'number') {
+      payload.body_yaw = -payload.body_yaw;
+    }
+
     return makeRequest<MoveUUID>(
       url,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(request),
+        body: JSON.stringify(payload),
       },
       this.config.timeout
     );

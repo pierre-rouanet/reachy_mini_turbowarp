@@ -1070,7 +1070,7 @@ export class ReachyMiniExtension {
 
           const result = await apiClient.goto(request);
           this.state.currentMoveUuid = result.uuid;
-          await sleep(duration * 1000 + 150);
+          await this.waitForMotionCompletion(duration);
         }
       }
     } catch (error) {
@@ -1299,6 +1299,35 @@ export class ReachyMiniExtension {
   // ==========================================================================
   // Helper Methods
   // ==========================================================================
+
+  /**
+   * Waits until the most recent goto-style move finishes running.
+   * Provides a small buffer past the commanded duration and polls the daemon.
+   */
+  private async waitForMotionCompletion(duration: number): Promise<void> {
+    const baseWait = duration * 1000 + 150;
+    await sleep(baseWait);
+
+    const maxPollTime = 2000;
+    const pollInterval = 120;
+    const start = Date.now();
+
+    while (Date.now() - start < maxPollTime) {
+      try {
+        const isRunning = await apiClient.isMovementRunning();
+        if (!isRunning) {
+          await sleep(100);
+          return;
+        }
+      } catch (error) {
+        console.warn('Failed to verify movement completion:', error);
+        return;
+      }
+      await sleep(pollInterval);
+    }
+
+    console.warn('Movement still running after waitForMotionCompletion timeout');
+  }
 
   /**
    * Updates the cached robot state
